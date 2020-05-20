@@ -13,15 +13,9 @@ export class AppComponent implements OnInit {
  
 
  
-  async ngOnInit()  {
+   ngOnInit(): void  {
     
-  const documento = await this.firestore.collection('testes')
-  .doc('sz3gcQCnivlX7ZEVrzC9')
-  .get()
-  .toPromise();
-
-console.log(documento);
-
+ 
   }
   
  
