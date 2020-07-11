@@ -1,0 +1,67 @@
+<form (ngSubmit)="submit()" [formGroup]="formulario">
+
+    <mat-card>
+        <mat-card-header>
+
+            <div mat-card-avatar class="avatar" fxLayout fxLayoutAlign="center center">
+                <mat-icon>developer_board</mat-icon>
+            </div>
+
+            <mat-card-title>Chip</mat-card-title>
+            <mat-card-subtitle>Edição da quantidade de Chip</mat-card-subtitle>
+
+        </mat-card-header>
+
+        <mat-card-content fxLayout="column">
+
+            <mat-form-field appearance="outline" class="input-quantidade">
+                <mat-label>Quantidade</mat-label>
+                <input matInput formControlName="quantidade" name="quantidade">
+                <mat-icon matPrefix>settings</mat-icon>
+                <mat-error *ngIf="formulario.controls['quantidade'].hasError('required')">A quantidade é obrigatório
+                </mat-error>
+            </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-actions>
+
+            <div fxLayout="row">
+
+                <button mat-button class="uppercase" type="button" (click)="voltar()" [disabled]="formulario.disabled">
+                    Voltar
+                </button>
+
+                <button mat-button class="uppercase" type="reset" [disabled]="formulario.disabled">
+                    Limpar
+                </button>
+
+                <span fxFlex></span>
+
+                <div class="spinner-container" *ngIf="formulario.disabled">
+                    <mat-spinner strokeWidth="2" diameter="22"> </mat-spinner>
+                </div>
+
+                <button mat-flat-button class="uppercase" type="submit" [disabled]="formulario.disabled">
+                    Salvar
+                </button>
+
+            </div>
+
+        </mat-card-actions>
+    </mat-card>
+</form>
+<br><br>
+
+<mat-card>
+    <div mat-card-avatar class="avatar" fxLayout fxLayoutAlign="center center">
+        <mat-icon>delete_outline</mat-icon>
+    </div>
+
+       <mat-list-item *ngFor="let chip of chips | async">
+        Quantidade: {{ chip.quantidade}}
+        <span fxFlex></span>
+        <button mat-icon-button  [color]="'success'" (click)="delete(chip.id)">
+            <mat-icon class="icon-edit">delete_forever</mat-icon>
+        </button>
+    </mat-list-item>
+</mat-card>

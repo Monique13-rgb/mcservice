@@ -1,0 +1,23 @@
+<mat-toolbar class="toolbar">
+
+    <div class="span">
+        <span>Mcservice</span>
+    </div>
+
+    <div fxFlex></div>
+    <div class="span">
+        {{usuario?.nome}}
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/login">
+            <mat-icon>power_settings_new</mat-icon>
+            <span>Sair</span>
+        </button>
+    </mat-menu>
+
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,177 @@
+<div class="container">
+
+    <div class="lista" fxLayout="row" fxFlex fxLayoutGap="16px" fxLayoutAlign="start start">
+
+        <div fxFlex="328px">
+            <mat-list>
+
+                <mat-divider></mat-divider>
+
+                <!-- Chip -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="subheader-icon">developer_board</mat-icon>
+                    <div mat-subheader>Chip
+                        <button mat-icon-button [color]="'success'" (click)="cadastrarChip()" *ngIf="usuarioAdmin()">
+                            <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-list-item *ngFor="let chip of chips | async">
+                    <mat-checkbox color="primary">{{chip.quantidade}}</mat-checkbox>
+                    <div fxFlex>
+                    </div>
+                    <button mat-icon-button [color]="'success'" [routerLink]="['/home/editarchip', chip.id]"
+                        *ngIf="usuarioAdmin()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-list-item>
+
+                <mat-divider></mat-divider>
+
+                <!-- Marca -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="subheader-icon">settings_cell</mat-icon>
+                    <div mat-subheader>Marca
+                        <button mat-icon-button [color]="'success'" (click)="cadastrarMarca()" *ngIf="usuarioAdmin()">
+                            <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-list-item *ngFor="let marca of marcas | async">
+                    <mat-checkbox color="primary">{{marca.nome}}</mat-checkbox>
+                    <div fxFlex>
+                    </div>
+                    <button mat-icon-button [color]="'success'" [routerLink]="['/home/editarmarca', marca.id]"
+                        *ngIf="usuarioAdmin()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </mat-list-item>
+
+                <mat-divider></mat-divider>
+
+                <!-- Memoria -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="subheader-icon">memory</mat-icon>
+                    <div mat-subheader>Memória
+                        <button mat-icon-button [color]="'success'" (click)="cadastrarMemoria()" *ngIf="usuarioAdmin()">
+                            <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-list-item *ngFor="let memoria of memorias | async">
+                    <mat-checkbox color="primary"> Memoria: {{memoria.memoriaRam}}</mat-checkbox>
+                    <mat-checkbox color="primary">Armazenamento: {{memoria.armazenamento }}</mat-checkbox>
+                    <div fxFlex>
+                    </div>
+                    <button mat-icon-button [color]="'success'" [routerLink]="['/home/editarmemoria', memoria.id]"
+                        *ngIf="usuarioAdmin()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+
+                </mat-list-item>
+
+                <mat-divider></mat-divider>
+
+                <!-- Sistema -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="subheader-icon"> phonelink_ring</mat-icon>
+                    <div mat-subheader>Sistema Operacional
+                        <button mat-icon-button [color]="'success'" (click)="cadastrarSO()" *ngIf="usuarioAdmin()">
+                            <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-list-item *ngFor="let sistema of sistemas | async">
+                    <mat-checkbox color="primary">{{sistema.sistemaOperacional}}</mat-checkbox>
+                    <div fxFlex>
+                    </div>
+                    <button mat-icon-button [color]="'success'" [routerLink]="['/home/editarsistema', sistema.id]"
+                        *ngIf="usuarioAdmin()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+
+                </mat-list-item>
+
+                <mat-divider></mat-divider>
+
+                <!-- Tamanho Tela-->
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="subheader-icon">aspect_ratio</mat-icon>
+                    <div mat-subheader>Tamanho da Tela
+                        <button mat-icon-button [color]="'success'" (click)="cadastrartamtela()" *ngIf="usuarioAdmin()">
+                            <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-list-item *ngFor="let tamanhotela of tamanhoTelas | async">
+                    <mat-checkbox color="primary">{{tamanhotela.nome}}</mat-checkbox>
+                    <div fxFlex>
+                    </div>
+                    <button mat-icon-button [color]="'success'"
+                        [routerLink]="['/home/editartamanhoTela', tamanhotela.id]" *ngIf="usuarioAdmin()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+
+                </mat-list-item>
+
+                <mat-divider></mat-divider>
+
+            </mat-list>
+        </div>
+
+        <div class="celulares" fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="start start">
+
+            <mat-card class="celular" *ngFor="let celulares of celular | async">
+
+                <div class="imagem-celular">
+                    <img *ngIf="celulares.imagens" [src]="celulares.imagens[0]">
+                    <div class="acoes" fxLayout="row" [routerLink]="['/home/visualizarimagens', celulares.id]">
+                        <button mat-icon-button>
+                            <mat-icon>loupe</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-card-content>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <p class="mat-title" fxFlex>{{celulares.nome}}</p>
+                        <p class="mat-subheading-1">R${{celulares.preco}}</p>
+                    </div>
+                    <p>{{celulares.descricao}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+
+                    <div fxLayout="row">
+
+                        <button mat-icon-button [color]="'success'" [routerLink]="['/home/editarcelular', celulares.id]"
+                            *ngIf="usuarioAdmin()">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button [color]="'success'" (click)="delete(celulares.id)"
+                            *ngIf="usuarioAdmin()">
+                            <mat-icon class="icon-edit">delete_forever</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" [routerLink]="['/home/imagens', celulares.id]"
+                            *ngIf="usuarioAdmin()">
+                            <mat-icon>photo_library</mat-icon>
+                        </button>
+
+                        <span fxFlex></span>
+
+                        <button mat-button class="carrinho" (click)="carrinho()">
+                            <mat-icon>add_shopping_cart</mat-icon>
+                            COMPRAR
+                        </button>
+
+                    </div>
+
+                </mat-card-actions>
+            </mat-card>
+
+        </div>
+
+    </div>
+</div>
+
+<button class="fixed-fab" mat-fab (click)="cadastro()" *ngIf="usuarioAdmin()">
+    <mat-icon>add</mat-icon>
+</button>

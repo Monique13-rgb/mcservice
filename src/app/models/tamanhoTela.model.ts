@@ -1,4 +1,6 @@
 export class tamanhoTela {
     id: string;
-    tela: string;
+    nome: string;
+    largura: number;
+    altura: number;
 }

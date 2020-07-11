@@ -1,4 +1,4 @@
 export class Sistema {
-    id:string;
-     sistemaOperacional: string;
+    id: string;
+    sistemaOperacional: string;
 }

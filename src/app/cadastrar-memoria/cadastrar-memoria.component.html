@@ -1,0 +1,64 @@
+<form (ngSubmit)="submit()" [formGroup]="formulario">
+
+    <mat-card>
+        <mat-card-header>
+
+            <div mat-card-avatar class="avatar" fxLayout fxLayoutAlign="center center">
+                <mat-icon>add</mat-icon>
+            </div>
+
+            <mat-card-title>Memoria</mat-card-title>
+            <mat-card-subtitle>Cadastro de memoria</mat-card-subtitle>
+
+        </mat-card-header>
+
+        <mat-card-content fxLayout="column">
+
+            <mat-form-field appearance="outline" class="input-quantidade">
+                <mat-label>Memoria Ram</mat-label>
+                <input matInput formControlName="memoriaRam" name="memoriaRam">
+                <mat-icon matPrefix>add</mat-icon>
+                <mat-error *ngIf="formulario.controls['memoriaRam'].hasError('required')">A memoria Ram é obrigatório
+                </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline" class="input-quantidade">
+                <mat-label>Armazenamento Interno</mat-label>
+                <input matInput formControlName="armazenamento" name="armazenamento">
+                <mat-icon matPrefix>add</mat-icon>
+                <mat-error *ngIf="formulario.controls['armazenamento'].hasError('required')">O armazenamento interno é
+                    obrigatório
+                </mat-error>
+            </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-actions>
+
+            <div fxLayout="row">
+
+                <button mat-button class="uppercase" type="button" (click)="voltar()" [disabled]="formulario.disabled">
+                    Voltar
+                </button>
+
+                <button mat-button class="uppercase" type="reset" [disabled]="formulario.disabled">
+                    Limpar
+                </button>
+
+                <span fxFlex></span>
+
+                <div class="spinner-container" *ngIf="formulario.disabled">
+                    <mat-spinner strokeWidth="2" diameter="22"> </mat-spinner>
+                </div>
+
+                <button mat-flat-button class="uppercase" type="submit" [disabled]="formulario.disabled">
+                    Salvar
+                </button>
+
+            </div>
+
+        </mat-card-actions>
+
+    </mat-card>
+
+</form>

@@ -1,0 +1,43 @@
+<form class="container-formulario" (ngSubmit)="submit()" [formGroup]="formulario">
+    <mat-card>
+        <div class="img">
+            <img
+                src="https://firebasestorage.googleapis.com/v0/b/projetofinalloja.appspot.com/o/free_horizontal_on_white_by_logaster.png?alt=media&token=eb5b0907-a896-4ef3-8b04-32f9483dfa8c">
+        </div>
+        <mat-card-content fxLayout="column">
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput formControlName="email" name="email" type="email">
+                    <mat-error *ngIf="formulario.controls['email'].hasError('required')">O e-mail é obrigatório
+                    </mat-error>
+                    <mat-error *ngIf="formulario.controls['email'].hasError('email')">O e-mail não é válido</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Senha</mat-label>
+                    <input matInput formControlName="senha" name="senha" type="password">
+                    <mat-error *ngIf="formulario.controls['senha'].hasError('required')">A senha é obrigatória
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-error *ngIf="erro">O usuário não existe ou a senha está incorreta</mat-error>
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+
+            <div class="spinner-container" *ngIf="formulario.disabled">
+                <mat-spinner strokeWidth="2" diameter="22"></mat-spinner>
+            </div>
+            <button mat-flat-button class="uppercase" type="submit" [disabled]="formulario.disabled">
+                Entrar
+            </button>
+            <br><br>
+        </mat-card-actions>
+    </mat-card>
+</form>
+<div class="cadastro">
+    Não tem cadastro, clique aqui!
+    <button mat-flat-button (click)="cadastrar()">Cadastrar</button>
+</div>

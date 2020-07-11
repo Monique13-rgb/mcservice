@@ -1,0 +1,29 @@
+.img{
+    text-align: center;
+}
+
+
+.container-formulario{
+    background-color: white;
+}
+
+mat-card{
+    height: 543px;
+    text-align: center;
+
+}
+.uppercase{
+    position: absolute;
+    left: 510px;
+    bottom: 200px;
+    width: 20%;
+background-color:#800000;
+}
+.cadastro{
+    text-align: center;
+    background-color: #DAA520;
+
+    .mat-flat-button{
+        background-color: brown;
+    }
+}

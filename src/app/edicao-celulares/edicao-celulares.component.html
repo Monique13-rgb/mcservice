@@ -1,0 +1,126 @@
+<form (ngSubmit)="submit()" [formGroup]="formulario">
+
+    <mat-card>
+        <mat-card-header>
+
+            <div mat-card-avatar class="avatar" fxLayout fxLayoutAlign="center center">
+                <mat-icon>phone_android</mat-icon>
+            </div>
+
+            <mat-card-title>Celulares</mat-card-title>
+            <mat-card-subtitle>Editar produto</mat-card-subtitle>
+
+        </mat-card-header>
+
+        <mat-card-content fxLayout="column">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome" name="nome">
+                <mat-error *ngIf="formulario.controls['nome'].hasError('required')">O nome é obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Descricao</mat-label>
+                <textarea matInput formControlName="descricao" name="descricao" rows="4"></textarea>
+                <mat-error *ngIf="formulario.controls['descricao'].hasError('required')">A descrição é obrigatória
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="input-preco">
+                <mat-label>Preço</mat-label>
+                <input matInput formControlName="preco" name="preço">
+                <mat-icon matPrefix>attach_money</mat-icon>
+                <mat-error *ngIf="formulario.controls['preco'].hasError('required')">O preço é obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Marca</mat-label>
+                <mat-select formControlName="idMarca">
+                    <mat-option *ngFor="let marca of marcas | async" [value]="marca.id">
+                        {{marca.nome}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulario.controls['idMarca'].hasError('required')">A marca é obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Chip</mat-label>
+                <mat-select formControlName="idChip">
+                    <mat-option *ngFor="let chip of chips | async" [value]="chip.id">
+                        {{chip.quantidade}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulario.controls['idChip'].hasError('required')">O chip é obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Memoria</mat-label>
+                <mat-select formControlName="idMemoria">
+                    <mat-option *ngFor="let memoria of memorias | async" [value]="memoria.id">
+                        {{memoria.memoriaRam}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulario.controls['idMemoria'].hasError('required')">A memoria é obrigatória
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Sistema Operacional</mat-label>
+                <mat-select formControlName="idSistema">
+                    <mat-option *ngFor="let sistema of sistemas | async" [value]="sistema.id">
+                        {{sistema.sistemaOperacional}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulario.controls['idSistema'].hasError('required')">O Sistema Operacional é obrigatório
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Tamanho da Tela</mat-label>
+                <mat-select formControlName="idTamanhoTela">
+                    <mat-option *ngFor="let tamanhoTela of tamanhoTelas | async" [value]="tamanhoTela.id">
+                        {{tamanhoTela.nome}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formulario.controls['idTamanhoTela'].hasError('required')">O tamanho da tela é obrigatória
+                </mat-error>
+            </mat-form-field>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+
+            <div fxLayout="row">
+
+                <button mat-button class="uppercase" type="button" (click)="voltar()">
+                    Voltar
+                </button>
+
+                <button mat-button class="uppercase" type="reset" [disabled]="formulario.disabled">
+                    Limpar
+                </button>
+
+                <span fxFlex></span>
+
+                <div class="spinner-container" *ngIf="formulario.disabled">
+                    <mat-spinner strokeWidth="2" diameter="22"> </mat-spinner>
+                </div>
+
+                <button mat-flat-button class="uppercase" type="submit"
+                    [disabled]="formulario.disabled">
+                    Salvar
+                </button>
+
+            </div>
+
+        </mat-card-actions>
+
+    </mat-card>
+
+</form>
+

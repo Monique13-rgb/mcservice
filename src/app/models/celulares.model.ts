@@ -1,13 +1,14 @@
 export class Celulares {
     id:string;
-    imagem: string;
+    nome: string;
+    descricao: string;
     preco: number;
     
+    imagens: string[];
     
-    idchip: number;
+    idChip: number;
     idtamanhoTela: string;
     idsistemaOperacional: string;
     idMarca: string;
-    idmemoriaRam: number;
-    idarmazenamento: string;
+    idMemoria: number;
 }
